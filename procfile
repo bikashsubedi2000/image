@@ -1,1 +1,1 @@
-web: gunicorn digitalhelp.wsgi
+web: gunicorn digitelhelp.wsgi
