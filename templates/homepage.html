@@ -1,0 +1,22 @@
+
+
+<!-- templates/homepage.html -->
+{% extends "base.html" %}
+
+{% block title %}Welcome to DigitelHelp{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1 class="glow-title">✨ Welcome to DigitelHelp</h1>
+    <p>Your one-stop-shop for simple AI-powered digital tools.</p>
+</section>
+<h2 class="glow-title" style="text-align: center;">Select a Tool</h2>
+
+
+<div class="tool-selection">
+    <a href="{% url 'upload_image' %}" class="tool-box">🖼️ AI Background Remover</a>
+    <a href="{% url 'resize_image' %}" class="tool-box">📐 Image Resizer</a>
+    <a href="{% url 'convert_image' %}" class="tool-box">🔁 Image Format Converter</a>
+</div>
+
+{% endblock %}

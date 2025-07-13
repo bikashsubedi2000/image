@@ -1,0 +1,265 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}DigitelHelp Tools{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        header {
+            background-color: #4a69bd;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-form {
+            text-align: center;
+        }
+
+        .form-group input[type="file"] {
+            padding: 10px;
+            border: 2px dashed #4a69bd;
+            background: #f4f6fc;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: #4a69bd;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #3b54a0;
+        }
+
+        .results {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .image-box {
+            width: 45%;
+            text-align: center;
+        }
+
+        .image-box img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #4a69bd;
+            text-decoration: none;
+        }
+        .app-title-box {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    position: relative;
+    border: 3px solid #fff;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    animation: glowBox 2s infinite linear;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+.tool-box {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    position: relative;
+    border: 3px solid #fff;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    animation: glowBox 2s infinite linear;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    color: rgb(47, 9, 240);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+    min-width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.tool-box:hover {
+    transform: scale(1.05);
+}
+
+.tool-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, #00f0ff, #ff00f7, #00ffae, #00f0ff);
+    background-size: 300% 300%;
+    animation: animateBorder 4s linear infinite;
+    z-index: 0;
+    filter: blur(10px);
+    opacity: 0.5;
+}
+
+.tool-box span {
+    position: relative;
+    z-index: 2;
+}
+.glow-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7),
+                 0 0 12px rgba(0, 240, 255, 0.6),
+                 0 0 20px rgba(255, 0, 247, 0.5);
+    animation: flicker 2s ease-in-out infinite alternate;
+}
+
+
+
+@keyframes animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+@keyframes animateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flicker {
+    from {
+        opacity: 1;
+        text-shadow: 0 0 20px #ffffff;
+    }
+    to {
+        opacity: 0.85;
+        text-shadow: 0 0 35px #00f0ff;
+    }
+}
+
+
+@keyframes animateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="app-title-box">
+        <span class="glow-text">Digitel Help</span>
+    </div>
+</header>
+
+
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<footer>
+    <p>Created with ❤️ by <a href="https://www.linkedin.com/in/bikash-subedi-7b9904244/" target="_blank">Bikash Subedi</a></p>
+</footer>
+
+</body>
+</html>

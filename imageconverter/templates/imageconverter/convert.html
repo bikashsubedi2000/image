@@ -1,0 +1,43 @@
+<!-- imageconverter/templates/imageconverter/convert.html -->
+{% extends "base.html" %}
+
+{% block title %}Image Converter{% endblock %}
+
+{% block content %}
+    <h1>Image Format Converter</h1>
+    <p>Convert your image to PNG, JPEG, WEBP, or GIF.</p>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Image:</label>
+            <input type="file" name="image" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <label for="format">Convert to:</label>
+            <select id="format" name="format">
+                <option value="png">PNG</option>
+                <option value="jpeg">JPEG</option>
+                <option value="webp">WEBP</option>
+                <option value="gif">GIF</option>
+            </select>
+        </div>
+        <button type="submit">Convert Image</button>
+    </form>
+
+    {% if processed_image_url %}
+    <div class="results">
+        <div class="image-box">
+            <h2>Original Image</h2>
+            <img src="{{ original_image_url }}" alt="Original Image">
+        </div>
+        <div class="image-box">
+            <h2>Converted Image</h2>
+            <img src="{{ processed_image_url }}" alt="Processed Image">
+            <a href="{{ processed_image_url }}" class="download-btn" download>
+                Download Image
+            </a>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

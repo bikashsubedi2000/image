@@ -1,0 +1,37 @@
+<!-- backgroundremover/templates/backgroundremover/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Background Remover{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>✨ AI Background Remover</h1>
+    <p>Upload an image and let our AI remove its background like magic.</p>
+</section>
+
+<section class="upload-form">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="file" name="image" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn">🎯 Remove Background</button>
+    </form>
+</section>
+
+{% if processed_image_url %}
+<section class="results">
+    <div class="image-box">
+        <h2>📷 Original Image</h2>
+        <img src="{{ original_image_url }}" alt="Original Image">
+    </div>
+    <div class="image-box">
+        <h2>✅ Background Removed</h2>
+        <img src="{{ processed_image_url }}" alt="Processed Image">
+        <a href="{{ processed_image_url }}" class="download-btn" download>
+            ⬇️ Download Image
+        </a>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
